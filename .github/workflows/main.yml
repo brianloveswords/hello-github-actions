@@ -5,6 +5,8 @@ jobs:
     build:
         name: Hello world action
         runs-on: ubuntu-latest
+        env:
+            GOOGLE_CREDENTIALS_ENCODED: ${{ secrets.GOOGLE_CREDENTIALS_ENCODED }}
         steps:
             - uses: actions/checkout@v1
             - uses: ./action-a
