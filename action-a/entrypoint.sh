@@ -1,3 +1,5 @@
 #!/bin/sh -l
 
-sh -c "echo Hello world my name is $INPUT_MY_NAME"
+echo Hello world my name is "${INPUT_MY_NAME}"
+node -e 'console.log("hi hello")'
+sh -c "ls -lah"
