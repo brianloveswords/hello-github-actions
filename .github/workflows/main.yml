@@ -1,12 +1,41 @@
 name: A workflow for my Hello World file
-on: push
+on:
+    push:
+        branches:
+            - master
 
 jobs:
     build:
         name: Hello world action
         runs-on: ubuntu-latest
+        env:
+            GOOGLE_CREDENTIALS_ENCODED: ${{ secrets.GOOGLE_CREDENTIALS_ENCODED }}
         steps:
             - uses: actions/checkout@v1
             - uses: ./action-a
               with:
                   MY_NAME: "Brian"
+            - name: Dump GitHub context
+                env:
+                GITHUB_CONTEXT: ${{ toJson(github) }}
+                run: echo "$GITHUB_CONTEXT"
+            - name: Dump job context
+                env:
+                JOB_CONTEXT: ${{ toJson(job) }}
+                run: echo "$JOB_CONTEXT"
+            - name: Dump steps context
+                env:
+                STEPS_CONTEXT: ${{ toJson(steps) }}
+                run: echo "$STEPS_CONTEXT"
+            - name: Dump runner context
+                env:
+                RUNNER_CONTEXT: ${{ toJson(runner) }}
+                run: echo "$RUNNER_CONTEXT"
+            - name: Dump strategy context
+                env:
+                STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+                run: echo "$STRATEGY_CONTEXT"
+            - name: Dump matrix context
+                env:
+                MATRIX_CONTEXT: ${{ toJson(matrix) }}
+                run: echo "$MATRIX_CONTEXT"
