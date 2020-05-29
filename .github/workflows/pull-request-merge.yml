@@ -1,11 +1,11 @@
-name: Workflow for PR Label
+name: Build on PR merge
 on:
   pull_request:
     types:
       - closed
 jobs:
   build:
-    name: Hello world action
+    name: Build on PR merge
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
     runs-on: ubuntu-latest
     # env:
