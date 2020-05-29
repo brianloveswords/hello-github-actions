@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: Hello world action
-    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == master
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'master'
     runs-on: ubuntu-latest
     # env:
     #   GOOGLE_CREDENTIALS_ENCODED: ${{ secrets.GOOGLE_CREDENTIALS_ENCODED }}
