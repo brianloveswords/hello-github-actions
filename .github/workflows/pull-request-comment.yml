@@ -1,0 +1,17 @@
+name: Workflow for PR Label
+on:
+  pull_request:
+    types:
+      - labeled
+jobs:
+  build:
+    name: Hello world action
+    if: contains(github.event.labels.*.name, "!build")
+    runs-on: ubuntu-latest
+    env:
+      GOOGLE_CREDENTIALS_ENCODED: ${{ secrets.GOOGLE_CREDENTIALS_ENCODED }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ./action-a
+        with:
+          MY_NAME: "Brian"
