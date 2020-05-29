@@ -6,12 +6,14 @@ on:
 jobs:
   build:
     name: Hello world action
-    if: contains(github.event.labels.*.name, '!build')
+    # if: contains(github.event.labels.*.name, '!build')
     runs-on: ubuntu-latest
-    env:
-      GOOGLE_CREDENTIALS_ENCODED: ${{ secrets.GOOGLE_CREDENTIALS_ENCODED }}
+    # env:
+    #   GOOGLE_CREDENTIALS_ENCODED: ${{ secrets.GOOGLE_CREDENTIALS_ENCODED }}
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./action-a
-        with:
-          MY_NAME: "Brian"
+      - name: whatever
+        run: "echo cool"
+      # - uses: actions/checkout@v2
+      # - uses: ./action-a
+      #   with:
+      #     MY_NAME: "Brian"
